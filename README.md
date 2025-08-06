@@ -13,36 +13,45 @@ This project demonstrates how I used the Lynis Security Audit Tool to harden a L
 * Firewall Utility:** UFW (*Uncomplicated Firewall*)
 
  **Initial Lynis Warnings & Fixes*
-🔶 **1. Outdated Lynis Version**
+ 
+ **1. Outdated Lynis Version**
 Warning:Version of Lynis is very old and should be updated `[LYNIS]`
 Fix: Removed the old version and ran an audit with the updated one.
+
 **Code:**
 cd Downloads
 cd lynis
 sudo ./lynis audit system
-🔶 **2. Vulnerable Packages Detected**
+
+ **2. Vulnerable Packages Detected**
 Warning:Found one or more vulnerable packages `[PKGS-7392]`
 Fix:Updated all packages to the latest versions.
+
 **Code:**
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
-🔶 **3. iptables Loaded Without Rules**
+
+ **3. iptables Loaded Without Rules**
 Warning: iptables module(s) loaded, but no rules active `[FIRE-4512]`
 Fix:Enabled UFW and configured secure firewall rules.
+
 **Code:**
 sudo apt install ufw -y
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw enable
- ✅ **Post-Hardening Status**
+
+  **Post-Hardening Status**
 After applying all the above fixes, I re-ran Lynis and confirmed:
 * Lynis version is up-to-date
 * No vulnerable packages found
 * Firewall is active with strict rules
+
 **References**
 * Lynis Control References UFW Ubuntu Guide CISOfy GitHub Repo
+
 **Author**
   Priyanka H S CyberSecurity Learner Hardening conducted using Lynis 3.0.3 on Ubuntu CyberLABVM.
 
